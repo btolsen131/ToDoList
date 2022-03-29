@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, session, redirect, url_for, g 
+from flask import Flask, render_template, request, session, redirect, url_for, g
 from checker import check_logged_in
+from forms import RegistrationForm, LoginForm
+
 app = Flask(__name__)   
 
 class User:
@@ -69,9 +71,20 @@ def profile()-> 'html':
 
     return render_template('profile.html',
                             the_title= appName,
-                            task_list = tasklist)   
+                            task_list = tasklist)
 
-app.secret_key = 'todoornottodo'
+@app.route('/profile/new', methods=['GET','POST'])
+@check_logged_in
+def new_post():
+    return render_template('create_task.html',
+                            title = 'New Post')
+
+@app.route('/registration')
+def register():
+    form = RegistrationForm()
+    return render_template('register.html', title='Register', form = form)
+
+app.secret_key = 'secretkeyhassecrets'
 
 if __name__=='__main__':
     app.run(debug=True)
