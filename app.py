@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for, g
+from flask import Flask, render_template, request, session, redirect, url_for, g, flash
 from checker import check_logged_in
 from forms import RegistrationForm, LoginForm
 
@@ -79,10 +79,16 @@ def new_post():
     return render_template('create_task.html',
                             title = 'New Post')
 
-@app.route('/registration')
+@app.route('/register', methods=['GET','POST'])
 def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        print(form.errors)
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('log_in'))
+
     return render_template('register.html', title='Register', form = form)
+    
 
 app.secret_key = 'secretkeyhassecrets'
 
