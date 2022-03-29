@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+<form method="POST" >
+    <table>
+        <p>Please sign in to see your to do list</p>
+        <tr><td>Username:</td><td><input name='Username' type='TEXT' width='60'></td></tr>
+        <tr><td>Password</td><td><input name='Username' type='password'></td></tr>
+    </table>
+    <p>When you're ready, click this button to get started:</p>
+    <p><input value='Log in' type='SUBMIT'></p>
+</form>
+<p class="signup"> Click here to sign up!</p>
+
+{% endblock %}
