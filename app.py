@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for, g 
-
+from checker import check_logged_in
 app = Flask(__name__)   
 
 class User:
@@ -14,6 +14,17 @@ class User:
 users = []
 users.append(User(id=1, username='Tony', password ='password'))
 users.append(User(id=2, username='Marty', password='passwd'))
+
+class Task:
+    def __init__(self, id, task, user_id):
+        self.id = id
+        self.task = task
+        self.user_id = user_id
+
+tasks =[]
+tasks.append(Task(id=1,task='Mop the floors',user_id=1))
+tasks.append(Task(id=2,task='Vaccum the floors', user_id=1))
+tasks.append(Task(id=3,task='clean the pool', user_id=2))
 
 appName = "Do it already"
 
@@ -40,6 +51,7 @@ def log_in() -> 'html':
         #if the passwords match redirect to the persons profile
         if user and user.password == password:
             session['user_id'] = user.id
+            session['logged_in'] = True
             return redirect(url_for('profile'))
         #send back to     
         return redirect(url_for('log_in'))
@@ -48,9 +60,16 @@ def log_in() -> 'html':
                             the_title = appName)
 
 @app.route('/profile')
+@check_logged_in
 def profile()-> 'html':
+    tasklist = []
+    for task in tasks:
+        if task.user_id == session['user_id']:
+            tasklist.append(task)
+
     return render_template('profile.html',
-                            the_title= appName)   
+                            the_title= appName,
+                            task_list = tasklist)   
 
 app.secret_key = 'todoornottodo'
 

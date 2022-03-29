@@ -7,4 +7,7 @@
 <h1>Successfully logged in!</h1>
 <p>Lets get to work.</p>
 
+{% for task in task_list %}
+    <p>{{ task.task }}</p>
+{% endfor %}
 {% endblock %}
