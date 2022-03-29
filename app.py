@@ -28,7 +28,7 @@ tasks.append(Task(id=1,task='Mop the floors',user_id=1))
 tasks.append(Task(id=2,task='Vaccum the floors', user_id=1))
 tasks.append(Task(id=3,task='clean the pool', user_id=2))
 
-appName = "Do it already"
+appName = "Do It Already"
 
 @app.before_first_request
 def before_request():
@@ -40,26 +40,14 @@ def before_request():
 
 @app.route('/', methods=['GET', 'POST'])
 def log_in() -> 'html':
-    if request.method == 'POST':
-        session.pop('user_id', None)
-
-        #get passed in username and password
-        username = request.form['username']
-        password = request.form['password']
-
-        #check if username is in users list
-        user = [x for x in users if x.username == username]
-        user = user[0]
-        #if the passwords match redirect to the persons profile
-        if user and user.password == password:
-            session['user_id'] = user.id
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.username.data == 'Tony' and form.password.data == 'passwd':
             session['logged_in'] = True
+            session['user_id'] = 1
             return redirect(url_for('profile'))
-        #send back to     
-        return redirect(url_for('log_in'))
-
     return render_template('login.html',
-                            the_title = appName)
+                            the_title = appName, form = form)
 
 @app.route('/profile')
 @check_logged_in
@@ -83,7 +71,7 @@ def new_post():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        print(form.errors)
+        users.append(User(id=4, username=form.username, password= form.password))
         flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('log_in'))
 
