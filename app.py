@@ -1,8 +1,14 @@
-from flask import Flask, render_template, request, session, redirect, url_for, g, flash
+from flask import Flask, render_template, request, session, redirect, url_for, g, flash, copy_current_request_context
 from checker import check_logged_in
 from forms import RegistrationForm, LoginForm
+from DBcm import UseDatabase 
 
 app = Flask(__name__)   
+#setting up database
+app.config['dbconfig'] = {'host': '127.0.0.1',
+            'user':'root',
+            'password': 'fuzzbutt',
+            'database': 'do_it_already'}
 
 class User:
     def __init__(self, id, username, password):
@@ -71,7 +77,25 @@ def new_post():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        users.append(User(id=4, username=form.username, password= form.password))
+        
+        #logging new user info to the database
+        @copy_current_request_context
+        def log_new_user(req: 'flask_request'):
+            with UseDatabase(app.config['dbconfig']) as cursor:
+                _SQL = """insert into login
+                        (username, password, email)
+                        values
+                        (%s,%s,%s)"""
+                cursor.execute(_SQL, (req.form.get('username'),
+                          req.form.get('password'),
+                          req.form.get('email')))
+        try:
+            log_new_user(request)
+        except Exception as err:
+            print('*** Logging New User to database failed with the following error: ', str(err))
+
+
+        #sending newly created user to login screen
         flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('log_in'))
 

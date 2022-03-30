@@ -1,19 +1,6 @@
 #setting up database
 import mysql.connector
 
-dbconfig = {'host': '127.0.0.1',
-            'user':'root',
-            'password': 'fuzzbutt',
-            'database': 'do_it_already'}
-
-
-
-conn = mysql.connector.connect(**dbconfig)
-
-cursor = conn.cursor()
-
-cursor.execute("drop table login;")
-
 _SQL="""create table login(
     id integer primary key auto_increment,
     username varchar(20),
@@ -26,4 +13,26 @@ _SQLinsert= """ insert into login (username, password, email)
                 values('bto131','password','Brian@gmail.com');"""
 #cursor.execute(_SQLinsert)
 
-#conn.commit()
+class UseDatabase:
+
+    def __init__(self, config:dict) -> None:
+        self.configuration = config
+
+    def __enter__(self) -> 'Cursor':
+        try:
+            self.conn = mysql.connector.connect(**self.configuration)
+            self.cursor = self.conn.cursor()
+            return self.cursor
+        except mysql.connector.errors.InterfaceError as err:
+            raise ConnectionError 
+        except mysql.connector.errors.ProgrammingError as err:
+            raise CredentialsError
+
+    def __exit__(self, exc_type, exc_value, exe_trace) -> None:
+        self.conn.commit()
+        self.cursor.close()
+        self.conn.close()
+        if exc_type is mysql.connector.errors.ProgrammingError:
+            raise SQLError(exc_value)
+        elif exc_type:
+            raise exc_type(exc_value)
