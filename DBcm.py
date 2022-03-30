@@ -13,6 +13,16 @@ _SQLinsert= """ insert into login (username, password, email)
                 values('bto131','password','Brian@gmail.com');"""
 #cursor.execute(_SQLinsert)
 
+class ConnectionError(Exception):
+    pass
+
+class CredentialsError(Exception):
+    pass
+
+class SQLError(Exception):
+    pass
+
+
 class UseDatabase:
 
     def __init__(self, config:dict) -> None:
