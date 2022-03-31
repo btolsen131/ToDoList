@@ -4,8 +4,8 @@ import mysql.connector
 _SQL="""create table login(
     id integer primary key auto_increment,
     username varchar(20),
-    password varchar(20),
-    email varchar(30));"""
+    password varchar(256),
+    email varchar(50));"""
 
 #cursor.execute(_SQL)
 

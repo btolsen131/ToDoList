@@ -1,3 +1,4 @@
+import bcrypt
 from flask import Flask, render_template, request, session, redirect, url_for, flash, copy_current_request_context
 from checker import check_logged_in
 from forms import RegistrationForm, LoginForm
@@ -5,11 +6,18 @@ from DBcm import UseDatabase
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)   
+bcrypt = Bcrypt(app)
+
 #setting up database
 app.config['dbconfig'] = {'host': '127.0.0.1',
             'user':'root',
             'password': 'fuzzbutt',
             'database': 'do_it_already'}
+class User:
+    def __init__(self, username, email, password):
+        self.username = username
+        self.email = email
+        self.password = password
 
 # Temporary tasks class and objects for testing
 class Task:
@@ -82,17 +90,19 @@ def register():
         
         #logging new user info to the database
         @copy_current_request_context
-        def log_new_user(req: 'flask_request'):
+        def log_new_user():
+            hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+            user =User(username=form.username.data, email = form.email.data, password=hashed_password)
             with UseDatabase(app.config['dbconfig']) as cursor:
                 _SQL = """insert into login
                         (username, password, email)
                         values
                         (%s,%s,%s)"""
-                cursor.execute(_SQL, (req.form.get('username'),
-                          req.form.get('password'),
-                          req.form.get('email')))
+                cursor.execute(_SQL, (user.username,
+                          user.password,
+                          user.email))
         try:
-            log_new_user(request)
+            log_new_user()
         except Exception as err:
             print('*** Logging New User to database failed with the following error: ', str(err))
 
