@@ -4,6 +4,7 @@ from flask import session
 
 from functools import wraps
 
+
 def check_logged_in(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -11,3 +12,4 @@ def check_logged_in(func):
             return func(*args, **kwargs)
         return  "You are not logged in"
     return wrapper
+
