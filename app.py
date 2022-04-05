@@ -36,7 +36,7 @@ appName = "Do It Already"
 @app.route('/', methods=['GET', 'POST'])
 def log_in() -> 'html':
     form = LoginForm()
-    if form.is_submitted():
+    if form.validate_on_submit():
         #checking login credentials
         @copy_current_request_context
         def validate_login(req) -> 'redirect':
