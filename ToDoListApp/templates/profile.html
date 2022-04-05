@@ -4,7 +4,7 @@
 
 <h2>{{ the_title }}</h2>
 
-<h1> Welcome {{username}}, you are now logged in!</h1>
+<h1> Welcome {{ current_user.username }}, you are now logged in!</h1>
 <p>Lets get to work.</p>
 <h2> Here are your current open tasks</h2>
 {% for task in task_list %}

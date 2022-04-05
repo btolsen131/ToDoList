@@ -1,9 +1,8 @@
-from flask import render_template, url_for, flash, redirect
-from flask_login import login_user, current_user, logout_user
+from flask import render_template, url_for, flash, redirect, request
+from flask_login import login_user, current_user, logout_user, login_required
 from ToDoListApp import app, db, bcrypt 
 from ToDoListApp.forms import RegistrationForm, LoginForm
 from ToDoListApp.database_models import User, Post
-from ToDoListApp.checker import check_logged_in
 
 appName='Do It Already'
 
@@ -17,7 +16,9 @@ def log_in() -> 'html':
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            return redirect(url_for('profile'))
+            next_page = request.args.get('next')
+            #returns user to page they were at prior to logging in, if not it will redirect to the profile page
+            return redirect(next_page) if next_page else redirect(url_for('profile'))
         else:
             flash('Login failed. Please check your email and password.')
     return render_template('login.html',
@@ -25,6 +26,7 @@ def log_in() -> 'html':
 
 #profile page
 @app.route('/profile')
+@login_required
 def profile()-> 'html':
     tasklist=['do the laundry', 'mop the floors']
 
@@ -33,6 +35,7 @@ def profile()-> 'html':
                             task_list = tasklist)
 #New to-do page
 @app.route('/profile/new', methods=['GET','POST'])
+@login_required
 def new_post():
     return render_template('create_task.html',
                             title = 'New Post')

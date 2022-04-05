@@ -11,7 +11,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:fuzzbutt@localhost
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
-
+login_manager.login_view = 'log_in'
+login_manager.login_message_category = 'info'
 
 app.secret_key = 'secretkeyhassecrets'
 
