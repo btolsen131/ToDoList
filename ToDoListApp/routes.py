@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from flask_login import login_user, current_user, logout_user, login_required
 from ToDoListApp import app, db, bcrypt 
 from ToDoListApp.forms import NewTask, RegistrationForm, LoginForm
@@ -25,15 +25,50 @@ def log_in() -> 'html':
                             the_title = appName, form = form)
 
 #profile page
-@app.route('/profile')
+@app.route('/profile', methods=['GET','POST'])
 @login_required
-def profile()-> 'html':
+def profile():
     task_list = Post.query.filter_by(user_id=int(current_user.id))
-    print(current_user.id)
-    print(task_list)
     return render_template('profile.html',
                             the_title= appName,
                             task_list = task_list)
+
+#page for individual tasks
+@app.route('/post/<int:post_id>')
+@login_required
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    print(post.content)
+    print(post.title)
+    return render_template('post.html',
+                            title = post.title,
+                            post = post)
+
+#update posts
+@app.route('/post/<int:post_id>/update', methods=['GET','POST'])
+@login_required
+def update_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    form = NewTask()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content =form.content.data
+        db.session.commit()
+        flash('Your task has been updated accordingly', 'success')
+        return redirect(url_for('post', post_id=post.id))
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.content.data = post.content
+    return render_template('create_task.html', 
+                            title = 'Update Task', 
+                            form = form,
+                            legend='Update task')
+
+
+
+
 #New to-do page
 @app.route('/profile/new', methods=['GET','POST'])
 @login_required
@@ -48,7 +83,8 @@ def new_post():
 
     return render_template('create_task.html',
                             title = 'New Task',
-                            form = form)
+                            form = form,
+                            legend = 'New Task')
 
 #Signup page
 @app.route('/register', methods=['GET','POST'])
@@ -72,3 +108,4 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for('log_in'))
+

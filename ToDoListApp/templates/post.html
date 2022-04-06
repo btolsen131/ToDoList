@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div id="post">
+        {% if post.author == current_user %}
+        <div>
+            <a class ='btn btn-secondary btn-sm m-1' href="{{ url_for('update_post', post_id = post.id)}}"> Update Task</a>
+            <button type="button" class="btn btn-danger btn-sm m-1"> Delete Task </button>
+        </div>
+        {% endif %}
+        <h2 id="postTitle"> {{ post.title }} </h2>
+        <p id="postContent"> {{ post.content }} </p>
+    </div>
+
+{% endblock %}
