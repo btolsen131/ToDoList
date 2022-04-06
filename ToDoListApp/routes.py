@@ -38,8 +38,6 @@ def profile():
 @login_required
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    print(post.content)
-    print(post.title)
     return render_template('post.html',
                             title = post.title,
                             post = post)
@@ -47,7 +45,7 @@ def post(post_id):
 #update posts
 @app.route('/post/<int:post_id>/update', methods=['GET','POST'])
 @login_required
-def update_post(post_id):
+def update_task(post_id):
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)
@@ -66,10 +64,19 @@ def update_post(post_id):
                             form = form,
                             legend='Update task')
 
+@app.route('/post/<int:post_id>/delete', methods=['GET', 'POST'])
+@login_required
+def delete_task(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(404)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Successfully deleted the task!', 'success')
+    return redirect(url_for('profile'))
 
 
-
-#New to-do page
+#New task page
 @app.route('/profile/new', methods=['GET','POST'])
 @login_required
 def new_post():

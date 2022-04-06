@@ -5,8 +5,8 @@
     <div id="post">
         {% if post.author == current_user %}
         <div>
-            <a class ='btn btn-secondary btn-sm m-1' href="{{ url_for('update_post', post_id = post.id)}}"> Update Task</a>
-            <button type="button" class="btn btn-danger btn-sm m-1"> Delete Task </button>
+            <a class ='btn btn-secondary btn-sm m-1' href="{{ url_for('update_task', post_id = post.id)}}"> Update Task</a>
+            <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('delete_task', post_id =post.id)}}"> Delete Task </button>
         </div>
         {% endif %}
         <h2 id="postTitle"> {{ post.title }} </h2>
