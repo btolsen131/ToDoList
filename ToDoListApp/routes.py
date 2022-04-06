@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request
 from flask_login import login_user, current_user, logout_user, login_required
 from ToDoListApp import app, db, bcrypt 
-from ToDoListApp.forms import RegistrationForm, LoginForm
+from ToDoListApp.forms import NewTask, RegistrationForm, LoginForm
 from ToDoListApp.database_models import User, Post
 
 appName='Do It Already'
@@ -28,17 +28,27 @@ def log_in() -> 'html':
 @app.route('/profile')
 @login_required
 def profile()-> 'html':
-    tasklist=['do the laundry', 'mop the floors']
-
+    task_list = Post.query.filter_by(user_id=int(current_user.id))
+    print(current_user.id)
+    print(task_list)
     return render_template('profile.html',
                             the_title= appName,
-                            task_list = tasklist)
+                            task_list = task_list)
 #New to-do page
 @app.route('/profile/new', methods=['GET','POST'])
 @login_required
 def new_post():
+    form = NewTask()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author= current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post has been created','success')
+        return redirect(url_for('profile'))
+
     return render_template('create_task.html',
-                            title = 'New Post')
+                            title = 'New Task',
+                            form = form)
 
 #Signup page
 @app.route('/register', methods=['GET','POST'])
