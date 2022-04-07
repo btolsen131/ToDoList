@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
-<h2>{{ the_title }}</h2>
 <div class="content-section" >
     <form method="POST" action="">
         {{ form.csrf_token() }}
@@ -51,7 +49,7 @@
     
         <small class='text-muted m1-2'><a href="#">Forgot Passsword?</a> </small>   
     </form>
-    <small class="text-muted"> New here? Click to <a href="{{ url_for('register') }}"> Sign Up!</a></small>>
+    <small class="text-muted"> New here? Click to <a href="{{ url_for('register') }}"> Sign Up!</a></small>
 </div>
 
 {% endblock %}
