@@ -1,6 +1,7 @@
 body {
   color:black;
-  margin: 2%
+  margin-left: 2%;
+  margin-right: 2%;
 }
 .button {
   color:blue;
@@ -11,26 +12,38 @@ body {
 
 /* Nav Bar */
 .navBar{
-  background-color: aqua;
-  color:azure;
-  position: fixed;
-  margin-top: 0;
+  background-color: rgb(70, 130, 180, 75%);
+  width: 95%;
+  height: 5%;
+  top: 0px;
+  margin: 0 2.5% 2.5% 2.5%;
   display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  position: fixed;
+  z-index:100;
   flex-direction: row-reverse;
+  align-items: center;
 }
 
-.navLink{
-  background-color: aqua;
-  color:azure;
-  font-size: 1.5rem;
-  border-radius: 20px;
-  border: 1px solid azure
+.navBar ul{
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  color:white;
+  text-decoration: none;
 }
 
-.navlink:hover{
-  color:aqua;
+.navBar li, .narBar li a {
+  list-style: none;
+  color:white;
+  text-decoration: none;
+  margin-right: 1%;
+}
+
+.navBar li a:hover{
+  color:purple;
   background-color: azure;
-  border:1px solid aqua;
 }
 
 .appName{

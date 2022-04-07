@@ -3,7 +3,6 @@
 <html>
     <head>
         <meta charset="'utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title> {{ the_title }} </title>
         <link rel="stylesheet" href="../static/ToDoList.css" />
     
@@ -18,21 +17,21 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-
+    <p class="appName">{{ the_title }}</p>
     {% if current_user.is_authenticated %}
-    <div class="navContainer">
     <div class="navBar">
-    <a class="navLink" href="{{ url_for('logout') }}">Logout</a>
-    <a class="navLink" href="{{ url_for('new_post') }}">New Task</a> 
-    <a class="navLink" href="{{ url_for('profile') }}">Profile</a>
-    </div>
+        <ul class="navBarList">
+            <li><a  href="{{ url_for('logout') }}">Logout</a></li>
+            <li><a  href="{{ url_for('new_post') }}">New Task</a></li> 
+            <li><a  href="{{ url_for('profile') }}">Profile</a></li>
+        </ul>
     </div>
     {% else %}
-    <div class="navContainer">
     <div class="navBar">
-    <a class="navLink" href="{{ url_for('log_in') }}">Login</a>
-    <a class="navLink" href="{{ url_for('register') }}">Register</a>            
-    </div>
+        <ul class="navBarList">
+            <li><a  href="{{ url_for('log_in') }}">Login</a> </li>
+            <li><a  href="{{ url_for('register') }}">Register</a> </li>           
+        </ul>
     </div>
     {% endif %}
     
