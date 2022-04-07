@@ -18,20 +18,18 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggle">
                   <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="{{ url_for('profile') }}">Home</a>
+                    <a class="nav-item nav-link" href="{{ url_for('profile') }}">Profile</a>
 
                   </div>
                   <!-- Navbar Right Side -->
                   <div class="navbar-nav">
                     {% if current_user.is_authenticated %}
-                      <ul class="navBarList">
-                          <li><a  href="{{ url_for('logout') }}">Logout</a>
-                          <li><a  href="{{ url_for('new_post') }}">New Task</a>
-                      </ul>
+                          <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+                          <a class="nav-item nav-link" href="{{ url_for('new_post') }}">New Task</a>
                   
                   {% else %}
-                          <a  href="{{ url_for('log_in') }}">Login</a> 
-                          <a  href="{{ url_for('register') }}">Register</a>          
+                          <a class="nav-item nav-link" href="{{ url_for('log_in') }}">Login</a> 
+                          <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>          
                   {% endif %}
                 </div>
               </div>
@@ -49,7 +47,8 @@
         {% endwith %}
 
     <div class="col-md-8">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
       </div>
     
     
