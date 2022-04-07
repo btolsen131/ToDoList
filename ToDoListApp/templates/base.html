@@ -36,20 +36,25 @@
             </div>
             </nav>
           </header>
-        {% with messages = get_flashed_messages(with_categories=True) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div >
+          <main role="main" class="container">
+            <div class='row'>
+              <div class="col-md-8">
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                  {% if messages %}
+                    {% for category, message in messages %}
+                      <div class=""alert alert-{{ category }}>
                         {{ message }}
-                    </div>
+                      </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
 
-    <div class="col-md-8">
         {% block body %}
         {% endblock %}
       </div>
+      </div>
+      </main>
+      
     
     
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
