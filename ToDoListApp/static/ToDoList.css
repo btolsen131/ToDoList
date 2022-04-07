@@ -1,130 +1,80 @@
 body {
-  color:black;
-  margin-left: 2%;
-  margin-right: 2%;
-}
-.button {
-  color:blue;
-  background-color: white;
-  border: 2px solid blue;
-  border-radius: 20px;
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
 }
 
-/* Nav Bar */
-.navBar{
-  background-color: rgb(70, 130, 180, 75%);
-  width: 95%;
-  height: 5%;
-  top: 0px;
-  margin: 0 2.5% 2.5% 2.5%;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  position: fixed;
-  z-index:100;
-  flex-direction: row-reverse;
-  align-items: center;
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
 }
 
-.navBar ul{
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  color:white;
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
   text-decoration: none;
 }
 
-.navBar li, .narBar li a {
-  list-style: none;
-  color:white;
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
   text-decoration: none;
-  margin-right: 1%;
 }
 
-.navBar li a:hover{
-  color:purple;
-  background-color: azure;
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
 }
 
-.appName{
-  font-size: 2.2rem;
-  color: burlywood;
-  text-decoration: overline;
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
 }
 
-.userName {
-  color:red;
-  font-size: 1rem;
-}
-
-.taskList {
-  color: green;
-}
-
-
-
-/* Post Styling */
-postTitle, postTitle a{
-  font-size: 2rem;
-}
-
-postContent{
-  font-size: 1rem;
-}
-
-
-/* Form Styling */
-.formLabel{
-  color:blue
-}
-
-.formError{
-  color:red
-}
-
-.formContent{
-  color:green
-}
-
-.submitButton {
-  color:white;
-  background-color: green;
-  border-radius: 20px;
-  border: 1px solid forestgreen;
-}
-
-/*log in form unigue fields*/
-.forgotPassword{
-  color:black;
-  font-size: 1rem;;
-}
-
-.forgotPassword a{
-  color: blue;
-  text-decoration: underline;
-}
-
-.signUp{
-  font-size: 1rem;
-}
-
-.alreadySignedUp{
-  font-size: 1rem;
-  color:blueviolet
-}
-.alreadySignedUp{
-  color:blue;
-  text-decoration: underline;
-}
-
-/* Profile page */
-.welcomeMessage{
-  color:black;
+.account-heading {
   font-size: 2.5rem;
-  display: flex;
-  justify-content: center;
-}
-.taskList{
-  background-color: yellow;
-  color:red
 }

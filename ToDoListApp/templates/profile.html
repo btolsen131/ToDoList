@@ -6,6 +6,6 @@
 <p>Lets get to work.</p>
 <h2 class="taskList"> Here are your current open tasks</h2>
 {% for task in task_list %}
-    <p id="taskTitle"><a href="{{ url_for('post', post_id=task.id) }}"><span class="taskTitle">{{ task.title }} </span></a></p>
+    <p><a class="article-title" href="{{ url_for('post', post_id=task.id) }}">{{ task.title }}</a></p>
 {% endfor %}
 {% endblock %}

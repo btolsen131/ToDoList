@@ -3,39 +3,39 @@
 {% block body %}
 
 <h2>{{ the_title }}</h2>
-<form method="POST" >
+<div class="content-section" >
     <form method="POST" action="">
         {{ form.csrf_token() }}
         <fieldset class="form-group">
-            <legend>Sign up now!</legend>
+            <legend class="bored-bottom mb-4">Sign in!</legend>
 
             <div class='form-group'>
-                <span class='formLabel'> {{ form.email.label }} </span>
+               {{ form.email.label(class="form-control-label") }} 
 
                 {% if form.email.errors %}
-                <span class="formError"> {{ form.email }} </span>
+                    {{ form.email(class="form-control form-control-lg is-invalid") }} 
                     <div class ='invalid-feedback'>
                         {% for error in form.email.errors %}
                             <span>{{error}}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                <span class="formContent"> {{ form.email }} </span>
+                {{ form.email(class="form-control form-control-lg") }} 
                 {% endif %}
             </div>
 
             <div class='form-group'>
-                <span class="formLabel">{{ form.password.label }} </span>
+                {{ form.password.label(class="form-control-label") }} 
 
                 {% if form.password.errors %}
-                <span class="'formError">{{ form.password }} </span>
+                    {{ form.password(class="form-control form-control-lg is-invalid") }} 
                     <div class ='invalid-feedback'>
                         {% for error in form.password.errors %}
                         <span>{{error}}</span>
                     {% endfor %}
                     </div>
                 {% else %}
-                <span class="formContent">{{ form.password }} </span>
+                    {{ form.password(class="form-control form-control-lg") }} 
                 {% endif %}
             </div>
             
@@ -46,12 +46,12 @@
 
         </fieldset>
         <div class='form-group'>
-            <span class='submitButton'> {{ form.submit }} </span>
+            {{ form.submit(class="btn btn-outline-info") }} 
         </div>
-    </form>
     
-<a class='forgotPassword' href="#">Forgot Passsword?</a>
-<p class="signUp"> New here? Click to <a href="{{ url_for('register') }}"> Sign Up!</a></p>
-
+        <small class='text-muted m1-2'><a href="#">Forgot Passsword?</a> </small>   
+    </form>
+    <small class="text-muted"> New here? Click to <a href="{{ url_for('register') }}"> Sign Up!</a></small>>
+</div>
 
 {% endblock %}

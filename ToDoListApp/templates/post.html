@@ -2,14 +2,14 @@
 
 {% block body %}
 
-    <div id="post">
-        <h2 id="postTitle"> {{ post.title }} </h2>
-        <p id="postContent"> {{ post.content }} </p>
+    <div id="media content-section">
+         <h2 class="article-title">{{ post.title }} </h2> 
+         <p class="article-content">{{ post.content }} </p>
         
         {% if post.author == current_user %}
         <div>
-            <a class ='button' href="{{ url_for('update_task', post_id = post.id)}}"> Update Task</a>
-            <a class="button" href="{{ url_for('delete_task', post_id =post.id)}}"> Delete Task </button>
+            <a class ='btn btn-secondary btn-sm mt-1 mb-1' href="{{ url_for('update_task', post_id = post.id)}}"> Update Task</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('delete_task', post_id =post.id)}}"> Delete Task </button>
         </div>
         {% endif %}
     </div>
