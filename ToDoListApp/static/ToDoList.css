@@ -1,80 +1,117 @@
 body {
-    background: #fafafa;
-    color: #333333;
-    margin-top: 5rem;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    color: #444444;
-  }
-  
-  .bg-steel {
-    background-color: #5f788a;
-  }
-  
-  .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
-  }
-  
-  .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
-  }
-  
-  .site-header .navbar-nav .nav-link.active {
-    font-weight: 500;
-  }
-  
-  .content-section {
-    background: #ffffff;
-    padding: 10px 20px;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
-    margin-bottom: 20px;
-  }
-  
-  .article-title {
-    color: #444444;
-  }
-  
-  a.article-title:hover {
-    color: #428bca;
-    text-decoration: none;
-  }
-  
-  .article-content {
-    white-space: pre-line;
-  }
-  
-  .article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
-  }
-  
-  .article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
-  }
-  
-  .article-metadata a:hover {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .article-svg {
-    width: 25px;
-    height: 25px;
-    vertical-align: middle;
-  }
-  
-  .account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-    margin-bottom: 16px;
-  }
-  
-  .account-heading {
-    font-size: 2.5rem;
-  }
+  color:black;
+  margin: 2%
+}
+.button {
+  color:blue;
+  background-color: white;
+  border: 2px solid blue;
+  border-radius: 20px;
+}
+
+/* Nav Bar */
+.navBar{
+  background-color: aqua;
+  color:azure;
+  position: fixed;
+  margin-top: 0;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.navLink{
+  background-color: aqua;
+  color:azure;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  border: 1px solid azure
+}
+
+.navlink:hover{
+  color:aqua;
+  background-color: azure;
+  border:1px solid aqua;
+}
+
+.appName{
+  font-size: 2.2rem;
+  color: burlywood;
+  text-decoration: overline;
+}
+
+.userName {
+  color:red;
+  font-size: 1rem;
+}
+
+.taskList {
+  color: green;
+}
+
+
+
+/* Post Styling */
+postTitle, postTitle a{
+  font-size: 2rem;
+}
+
+postContent{
+  font-size: 1rem;
+}
+
+
+/* Form Styling */
+.formLabel{
+  color:blue
+}
+
+.formError{
+  color:red
+}
+
+.formContent{
+  color:green
+}
+
+.submitButton {
+  color:white;
+  background-color: green;
+  border-radius: 20px;
+  border: 1px solid forestgreen;
+}
+
+/*log in form unigue fields*/
+.forgotPassword{
+  color:black;
+  font-size: 1rem;;
+}
+
+.forgotPassword a{
+  color: blue;
+  text-decoration: underline;
+}
+
+.signUp{
+  font-size: 1rem;
+}
+
+.alreadySignedUp{
+  font-size: 1rem;
+  color:blueviolet
+}
+.alreadySignedUp{
+  color:blue;
+  text-decoration: underline;
+}
+
+/* Profile page */
+.welcomeMessage{
+  color:black;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+.taskList{
+  background-color: yellow;
+  color:red
+}

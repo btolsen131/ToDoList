@@ -6,77 +6,77 @@
 <div>
     <form method="POST" action="#">
         {{ form.csrf_token() }}
-        <fieldset class="form-group">
+        <fieldset class_="form-group">
             <legend>Sign up now!</legend>
 
-            <div class='form-group'>
-                {{ form.username.label(class='form-control-label') }}
+            <div class_='form-group'>
+                <span class='formLabel'>{{ form.username.label }}</span>
 
                 {% if form.username.errors %}
-                    {{ form.username(class="form-control form-control-lg is-invalid") }}
+                    <span class='formError'>{{ form.username }} </span>
                     <div class ='invalid-feedback'>
                         {% for error in form.username.errors %}
                             <span>{{error}}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.username(class='form-control form-control-lg') }}
+                    <span class="formContent">{{ form.username }}</span>
                 {% endif %}
             </div>
 
             <div class='form-group'>
-                {{ form.email.label(class='form-control-label') }}
+                <span class='formLabel'>{{ form.email.label }} </span>
                 
                 {% if form.email.errors %}
-                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                   <span class="formError"> {{ form.email }} </span>
                     <div class ='invalid-feedback'>
                         {% for error in form.email.errors %}
                         <span>{{error}}</span>
                     {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.email(class='form-control form-control-lg') }}
+                    <span class='formContent'>{{ form.email }} </span>
                 {% endif %}
             </div>
 
             <div class='form-group'>
-                {{ form.password.label(class='form-control-label') }}
+                <span class='formLabel'>{{ form.password.label }} </span>
 
                 {% if form.password.errors %}
-                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                    <span class='formError'>{{ form.password }} </span>
                     <div class ='invalid-feedback'>
                         {% for error in form.password.errors %}
                         <span>{{error}}</span>
                     {% endfor %}
                     </div>
                 {% else %}
-                {{ form.password(class='form-control form-control-lg') }}
+                <span class='formContent'>{{ form.password }} </span>
                 {% endif %}
             </div>
 
             <div class='form-group'>
-                {{ form.confirm_password.label(class='form-control-label') }}
+                <span class='formLabel'> {{ form.confirm_password.label }} </span>
 
                 {% if form.confirm_password.errors %}
-                    {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                <span class="formError"> {{ form.confirm_password }} </span>
                     <div class ='invalid-feedback'>
                         {% for error in form.confirm_password.errors %}
                         <span>{{error}}</span>
                     {% endfor %}
                     </div>
                 {% else %}
-                {{ form.confirm_password(class='form-control form-control-lg') }}
+                <span class="formContent">{{ form.confirm_password }} </span>
                 {% endif %}
             </div>
             
         </fieldset>
         <div class='form-group'>
-            {{ form.submit(class="btn btn-outline-info") }}
+            <span class="submitButton"> {{ form.submit }} </span>
         </div>
     </form>
 </div>
 <div>
-    <p>
+    <p class="alreadySignedUp">
         Already have an account? <a href="{{ url_for('log_in') }}">Sign In</a>
     </p>
 </div>

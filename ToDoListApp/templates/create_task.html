@@ -10,41 +10,40 @@
             <legend>{{ legend }}</legend>
 
             <div class='form-group'>
-                {{ form.title.label(class='form-control-label') }}
+                {{ form.title.label(class_= 'formLabel') }}
 
                 {% if form.title.errors %}
-                    {{ form.title(class="form-control form-control-lg is-invalid") }}
+                    {{ form.title(class_='formError') }}
                     <div class ='invalid-feedback'>
                         {% for error in form.title.errors %}
                             <span>{{error}}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.title(class='form-control form-control-lg') }}
+                    {{ form.title(class_='formContent') }}
                 {% endif %}
             </div>
 
             <div class='form-group'>
-                {{ form.content.label(class='form-control-label') }}
+                {{ form.content.label(class_='formLabel') }}
 
                 {% if form.content.errors %}
-                    {{ form.content(class="form-control form-control-lg is-invalid") }}
+                    {{ form.content(class_="formError") }}
                     <div class ='invalid-feedback'>
                         {% for error in form.content.errors %}
                         <span>{{error}}</span>
                     {% endfor %}
                     </div>
                 {% else %}
-                {{ form.content(class='form-control form-control-lg') }}
+                {{ form.content(class_='formContent') }}
                 {% endif %}
             </div>
             
 
         </fieldset>
         <div class='form-group'>
-            {{ form.submit(class="btn btn-outline-info") }}
+            {{ form.submit(class_="submitButton") }}
         </div>
     </form>
     
-    <p><input value='Submit Task' type='SUBMIT'></p>
 {% endblock %}
