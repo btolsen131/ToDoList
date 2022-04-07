@@ -114,5 +114,6 @@ def register():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash('You have successfully logged out of your account.')
     return redirect(url_for('log_in'))
 
