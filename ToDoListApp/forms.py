@@ -42,3 +42,20 @@ class NewTask(FlaskForm):
                         validators=[DataRequired()])
     submit = SubmitField('Add Task')
 
+class RequestResetForm(FlaskForm):
+    email = StringField('Email', 
+                            validators=[DataRequired(), Email()])
+    submit = SubmitField('Reset Password')
+
+    def validate_email(self, email):
+        #check if email is in database
+        found_email = User.query.filter_by(email=email.data).first()
+        if not found_email:
+            raise ValidationError('Email not connected to a current account, please register.')
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password',
+                                validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password',
+                                validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Reset Password')

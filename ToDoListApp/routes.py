@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, abort
 from flask_login import login_user, current_user, logout_user, login_required
 from ToDoListApp import app, db, bcrypt 
-from ToDoListApp.forms import NewTask, RegistrationForm, LoginForm
+from ToDoListApp.forms import NewTask, RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm
 from ToDoListApp.database_models import User, Post
 
 appName='Do It Already'
@@ -111,9 +111,36 @@ def register():
 
     return render_template('register.html', title='Register', form = form)
 
+#logout
 @app.route('/logout')
 def logout():
     logout_user()
     flash('You have successfully logged out of your account.')
     return redirect(url_for('log_in'))
 
+def send_reset_email(user):
+    pass
+
+#requesting to reset password
+@app.route('/reset_password', methods=['GET','POST'])
+def reset_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('profile'))
+    form = RequestResetForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        send_reset_email(user)
+        flash('An email has been sent to reset your password', 'info')
+        return redirect(url_for('log_in'))
+    return render_template('reset_request.html', title="Reset Password", form = form)
+
+@app.route('/reset_password/<token>', methods=['GET','POST'])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('profile'))
+    user = User.verify_reset_token(token)
+    if user is None:
+        flash('That is an invalid or expired token', 'warning')
+        return redirect(url_for('reset_request'))
+    form = ResetPasswordForm()
+    return render_template('reset_token.html', title="Reset Password", form = form)
