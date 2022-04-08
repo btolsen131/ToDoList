@@ -9,7 +9,7 @@ import os
 appName='Do It Already'
 
 @app.route('/', methods=['GET', 'POST'])
-def log_in() -> 'html':
+def log_in():
     if current_user.is_authenticated:
         return redirect(url_for('profile'))
     form = LoginForm()
