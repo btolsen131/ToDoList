@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
+import os
 
 #app initialization
 app = Flask(__name__)
@@ -18,10 +19,10 @@ login_manager.login_message_category = 'info'
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = #email
-app.config['MAIL_PASSWORD'] = #password
+app.config['MAIL_USERNAME'] = os.environ.get('AdminEmail')
+app.config['MAIL_PASSWORD'] = os.environ.get('AdminEmailPass')
 mail = Mail(app)
 
-app.secret_key = 'secretkeyhassecrets'
+app.config['SECRET_KEY'] = 'secretkeyhassecrets'
 
 from ToDoListApp import routes

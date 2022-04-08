@@ -1,8 +1,10 @@
 from flask import render_template, url_for, flash, redirect, request, abort
 from flask_login import login_user, current_user, logout_user, login_required
-from ToDoListApp import app, db, bcrypt 
+from ToDoListApp import app, db, bcrypt, mail 
 from ToDoListApp.forms import NewTask, RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm
 from ToDoListApp.database_models import User, Post
+from flask_mail import Message
+import os
 
 appName='Do It Already'
 
@@ -118,8 +120,17 @@ def logout():
     flash('You have successfully logged out of your account.')
     return redirect(url_for('log_in'))
 
+#function to send email for password reset
 def send_reset_email(user):
-    pass
+    token = user.get_reset_token()
+    msg = Message('Password Reset Request: Just Do It Already', 
+                sender= str(os.environ.get('AdminEmail')), 
+                recipients=[user.email])
+    msg.body = f'''To reset your password, visit the following link:
+{url_for('reset_token', token=token, _external = True)}
+If you didn't make this request, please disregard.
+                '''
+    mail.send(msg)
 
 #requesting to reset password
 @app.route('/reset_password', methods=['GET','POST'])
@@ -143,4 +154,12 @@ def reset_token(token):
         flash('That is an invalid or expired token', 'warning')
         return redirect(url_for('reset_request'))
     form = ResetPasswordForm()
+    if form.validate_on_submit():
+        #logging new user info to the database   
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user.password = hashed_password
+        db.session.commit()
+        #sending newly created user to login screen
+        flash(f'Password has been changed! Please log in.', 'success')
+        return redirect(url_for('log_in'))
     return render_template('reset_token.html', title="Reset Password", form = form)
