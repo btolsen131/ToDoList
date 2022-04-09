@@ -108,7 +108,19 @@ The below packages are required to be downloaded to run the app.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+<a href="https://github.com/btolsen131/ToDoList">
+    <img src="images/homepage.png" >
+  </a> 
+  
+<a href="https://github.com/btolsen131/ToDoList">
+    <img src="images/profile.png" >
+  </a>
 
+<a href="https://github.com/btolsen131/ToDoList">
+    <img src="images/task.png" >
+  </a>
+  
+ 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
