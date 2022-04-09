@@ -4,7 +4,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -13,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/btolsen131/ToDoList">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo">
   </a>
 
 <h3 align="center">Just Do It Already</h3>
@@ -175,8 +174,5 @@ Project Link: [https://github.com/btolsen131/ToDoList](https://github.com/btolse
 [stars-url]: https://github.com/btolsen131/ToDoList/stargazers
 [issues-shield]: https://img.shields.io/github/issues/btolsen131/ToDoList.svg?style=for-the-badge
 [issues-url]: https://github.com/btolsen131/ToDoList/issues
-[license-shield]: https://img.shields.io/github/license/btolsen131/ToDoList.svg?style=for-the-badge
-[license-url]: https://github.com/btolsen131/ToDoList/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/briantolsen
-[product-screenshot]: images/screenshot.png
