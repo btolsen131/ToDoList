@@ -130,6 +130,7 @@ The below packages are required to be downloaded to run the app.
 
 
 <!-- CONTRIBUTING -->
+## Contributing
 
 If you have a suggestion that would make this better or for additional features, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
