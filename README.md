@@ -174,8 +174,5 @@ Project Link: [https://github.com/btolsen131/ToDoList](https://github.com/btolse
 [stars-url]: https://github.com/btolsen131/ToDoList/stargazers
 [issues-shield]: https://img.shields.io/github/issues/btolsen131/ToDoList.svg?style=for-the-badge
 [issues-url]: https://github.com/btolsen131/ToDoList/issues
-[license-shield]: https://img.shields.io/github/license/btolsen131/ToDoList.svg?style=for-the-badge
-[license-url]: https://github.com/btolsen131/ToDoList/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/briantolsen
-[product-screenshot]: images/screenshot.png
