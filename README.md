@@ -154,7 +154,7 @@ Portfolio Website: [https://btolsen131.github.io/portfolio_website/](https://bto
 
 Project Link: [https://github.com/btolsen131/ToDoList](https://github.com/btolsen131/ToDoList)
 
-LinkedIn: [https://www.linkedin.com/in/briantolsen/] (https://www.linkedin.com/in/briantolsen/)
+LinkedIn: [https://www.linkedin.com/in/briantolsen/](https://www.linkedin.com/in/briantolsen/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
