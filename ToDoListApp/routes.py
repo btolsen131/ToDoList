@@ -108,7 +108,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         #sending newly created user to login screen
-        flash(f'Account created for {form.username.data}! Please log in.', 'success')
+        flash('Account created for {form.username.data}! Please log in.', 'success')
         return redirect(url_for('log_in'))
 
     return render_template('register.html', title='Register', form = form)
@@ -160,6 +160,6 @@ def reset_token(token):
         user.password = hashed_password
         db.session.commit()
         #sending newly created user to login screen
-        flash(f'Password has been changed! Please log in.', 'success')
+        flash('Password has been changed! Please log in.', 'success')
         return redirect(url_for('log_in'))
     return render_template('reset_token.html', title="Reset Password", form = form)
