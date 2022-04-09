@@ -22,7 +22,7 @@ def log_in():
             #returns user to page they were at prior to logging in, if not it will redirect to the profile page
             return redirect(next_page) if next_page else redirect(url_for('profile'))
         else:
-            flash('Login failed. Please check your email and password.')
+            flash('Login failed. Please check your email and password.', 'error')
     return render_template('login.html',
                             the_title = appName, form = form)
 
