@@ -4,7 +4,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -13,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/btolsen131/ToDoList">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo">
   </a>
 
 <h3 align="center">Just Do It Already</h3>
@@ -52,9 +51,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -111,7 +107,19 @@ The below packages are required to be downloaded to run the app.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+<a href="https://github.com/btolsen131/ToDoList">
+    <img src="images/homepage.png" >
+  </a> 
+  
+<a href="https://github.com/btolsen131/ToDoList">
+    <img src="images/profile.png" >
+  </a>
 
+<a href="https://github.com/btolsen131/ToDoList">
+    <img src="images/task.png" >
+  </a>
+  
+ 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
