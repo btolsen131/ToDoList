@@ -24,7 +24,7 @@ class RegistrationForm(FlaskForm):
         #check if email is in database
         found_email = User.query.filter_by(email=email.data).first()
         if found_email:
-            raise ValidationError('Email already exists please select a new one or sign into your account.')
+            raise ValidationError('Email already exists please select a new one or sign in to your account.')
     
 
 class LoginForm(FlaskForm):
