@@ -52,7 +52,6 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -82,11 +81,15 @@
 ## Getting Started
 
 To get this project to run on your local computer download the below packages. Once downloaded please enter your information here.
+<br />
 MySQL Database 
-```app.config['SQLALCHEMY_DATABASE_URI] = #your database here```
-Admin btolsen131
 
-```app.config['MAIL_USERNAME'] = & app.config['MAIL_PASSWORD'] = ```
+```app.config['SQLALCHEMY_DATABASE_URI] = #your database here```
+<br />
+Admin Email info 
+
+```app.config['MAIL_USERNAME'] = #your admin email here```
+``` app.config['MAIL_PASSWORD'] = #your admin email password here```
 
 ### Prerequisites
 
@@ -147,18 +150,11 @@ Don't forget to give the project a star! Thanks again!
 
 Brian Olsen - btolsen131@gmail.com
 
+Portfolio Website: [https://btolsen131.github.io/portfolio_website/](https://btolsen131.github.io/portfolio_website/)
+
 Project Link: [https://github.com/btolsen131/ToDoList](https://github.com/btolsen131/ToDoList)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
+LinkedIn: [https://www.linkedin.com/in/briantolsen/] (https://www.linkedin.com/in/briantolsen/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
