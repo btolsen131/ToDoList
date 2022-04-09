@@ -61,7 +61,7 @@
 ## About The Project
 
 
- `This project is a full stack CRUD app with user registration features.`
+ `This full stack project uses Python and MySQL to build a web app to enter and track tasks to do. The app was built using the Flask Python framework. I used the SQLAlchemy, Bcrypt, and LoginManager libraries to build out the database connection and user authenication features.`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
