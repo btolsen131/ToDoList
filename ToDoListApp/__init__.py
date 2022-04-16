@@ -9,7 +9,7 @@ import os
 
 #app initialization
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('do_it_already_db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://baba503e3783c9:d8a4f02b@us-cdbr-east-05.cleardb.net/heroku_01005eba649d010'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
