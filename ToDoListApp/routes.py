@@ -117,7 +117,7 @@ def register():
 @app.route('/logout')
 def logout():
     logout_user()
-    flash('You have successfully logged out of your account.')
+    flash('You have successfully logged out of your account.', 'warning')
     return redirect(url_for('log_in'))
 
 #function to send email for password reset
