@@ -24,6 +24,6 @@ app.config['MAIL_USERNAME'] = S3Connection(os.environ['AdminEmail'])
 app.config['MAIL_PASSWORD'] = S3Connection(os.environ['AdminEmailPass'])
 mail = Mail(app)
 
-app.config['SECRET_KEY'] = 'secretkeyhassecrets'
+app.config['SECRET_KEY'] = S3Connection(os.environ['SECRET_KEY'])
 
 from ToDoListApp import routes
