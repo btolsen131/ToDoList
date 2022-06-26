@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request, abort
 from flask_login import login_user, current_user, logout_user, login_required
-from ToDoListApp import app, db, bcrypt, mail 
+from ToDoListApp import app, db, bcrypt, mail
 from ToDoListApp.forms import NewTask, RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm
 from ToDoListApp.database_models import User, Post
 from flask_mail import Message
@@ -61,8 +61,8 @@ def update_task(post_id):
     elif request.method == 'GET':
         form.title.data = post.title
         form.content.data = post.content
-    return render_template('create_task.html', 
-                            title = 'Update Task', 
+    return render_template('create_task.html',
+                            title = 'Update Task',
                             form = form,
                             legend='Update task')
 
@@ -87,7 +87,7 @@ def new_post():
         post = Post(title=form.title.data, content=form.content.data, author= current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Your post has been created','success')
+        flash('Your task has been created','success')
         return redirect(url_for('profile'))
 
     return render_template('create_task.html',
@@ -102,13 +102,13 @@ def register():
         return redirect(url_for('profile'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        #logging new user info to the database   
+        #logging new user info to the database
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user =User(username=form.username.data, email = form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
         #sending newly created user to login screen
-        flash('Account created for {form.username.data}! Please log in.', 'success')
+        flash('Account created! Please log in.', 'success')
         return redirect(url_for('log_in'))
 
     return render_template('register.html', title='Register', form = form)
@@ -123,8 +123,8 @@ def logout():
 #function to send email for password reset
 def send_reset_email(user):
     token = user.get_reset_token()
-    msg = Message('Password Reset Request: Just Do It Already', 
-                sender= str(os.environ.get('AdminEmail')), 
+    msg = Message('Password Reset Request: Just Do It Already',
+                sender= str(os.environ.get('AdminEmail')),
                 recipients=[user.email])
     msg.body = f'''To reset your password, visit the following link:
 {url_for('reset_token', token=token, _external = True)}
@@ -155,7 +155,7 @@ def reset_token(token):
         return redirect(url_for('reset_request'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
-        #logging new user info to the database   
+        #logging new user info to the database
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user.password = hashed_password
         db.session.commit()
