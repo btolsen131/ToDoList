@@ -6,6 +6,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 import os
+from boto.s3.connection import S3Connection
 
 #app initialization
 app = Flask(__name__)
@@ -19,8 +20,8 @@ login_manager.login_message_category = 'info'
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('AdminEmail')
-app.config['MAIL_PASSWORD'] = os.environ.get('AdminEmailPass')
+app.config['MAIL_USERNAME'] = S3Connection(os.environ['AdminEmail'])
+app.config['MAIL_PASSWORD'] = S3Connection(os.environ['AdminEmailPass'])
 mail = Mail(app)
 
 app.config['SECRET_KEY'] = 'secretkeyhassecrets'

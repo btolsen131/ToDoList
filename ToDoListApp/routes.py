@@ -4,6 +4,7 @@ from ToDoListApp import app, db, bcrypt, mail
 from ToDoListApp.forms import NewTask, RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm
 from ToDoListApp.database_models import User, Post
 from flask_mail import Message
+from boto.s3.connection import S3Connection
 import os
 
 appName='Do It Already'
@@ -124,7 +125,7 @@ def logout():
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message('Password Reset Request: Just Do It Already',
-                sender= str(os.environ.get('AdminEmail')),
+                sender= str(S3Connection(os.environ['AdminEmail'])),
                 recipients=[user.email])
     msg.body = f'''To reset your password, visit the following link:
 {url_for('reset_token', token=token, _external = True)}
